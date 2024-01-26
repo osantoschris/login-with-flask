@@ -4,3 +4,5 @@ A aplicação está sendo desenvolvida com as seguintes linguagens:
     a. Utilização da biblioteca Flask
 2. HTML
 3. CSS
+
+Esta documentação está em processo de criação juntamente com a aplicação. Em breve serão publicadas as etapas do processo de criação e as primeiras tasks realizadas.
