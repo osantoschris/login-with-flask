@@ -10,8 +10,18 @@ db = SQLAlchemy(app)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    lastname = db.Column(db.String(150), nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
+
+class Client(db.Model):
+    __tablename__ = 'clients'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    company = db.Column(db.String(100), nullable=True)
+    email = db.Column(db.String(100), nullable=False)
 
 @app.route('/')
 def index():
@@ -52,16 +62,22 @@ def dashboard():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
+        name = request.form['name']
+        lastname = request.form['lastname']
+        email = request.form['email']
         username = request.form['username']
         password = request.form['password']
         
         existing_user = User.query.filter_by(username=username).first()
+        existing_email = User.query.filter_by(email=email).first()
 
         if existing_user:
             flash('O nome de usuário já está em uso.', 'danger')
+        elif existing_email:
+            flash('O email já está cadastrado no sistema. Clique em "Esqueci a senha".')
         else:
             hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
-            new_user = User(username=username, password=hashed_password)
+            new_user = User(name=name, lastname=lastname, email=email, username=username, password=hashed_password)
             db.session.add(new_user)
             db.session.commit()
             
@@ -75,3 +91,4 @@ if __name__ == '__main__':
     app.run(host='192.168.0.108', debug=True)
 
 # 25/01/2024 - IP Atual = '192.168.0.108'
+# 29/01/2024 - IP se manteve o mesmo. 

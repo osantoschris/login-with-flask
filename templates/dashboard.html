@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Honk&display=swap');
+    </style>
     <title>Dashboard</title>
 </head>
 <body>
-
-    <div class="dashboard">
+    <div class="header">
+        <label for="title">Bem vindo</label>
         <form action="{{ url_for('logout') }}" method="post">
-            <label for="information">Clique no botão abaixo para sair</label>
             <button type="submit">Sair</button>
         </form>
     </div>
-
+    <div class="main">
+        <div class="content">
+            <h3>Bem-vindo!</h3>
+            <p>Seja bem-vindo ao sistema de cadastro de clientes.</p>
+            <p>Este será seu espaço para realizar o cadastro e gerenciamento de seus clientes.</p>
+        </div>
+    </div>
 </body>
 </html>
