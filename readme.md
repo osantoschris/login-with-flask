@@ -16,3 +16,5 @@ Esta documentação está em processo de criação juntamente com a aplicação.
 
 30/01/2024
  - Tentativa 1 de fazer deploy
+ - Botão de sair ajustado
+ - Fonte da tela de dashboard ajustada

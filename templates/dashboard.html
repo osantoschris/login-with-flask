@@ -11,10 +11,12 @@
 </head>
 <body>
     <div class="header">
-        <label for="title">Bem vindo</label>
-        <form action="{{ url_for('logout') }}" method="post">
-            <button type="submit">Sair</button>
-        </form>
+        <div class="content-header">    
+            <label for="title">Bem vindo</label>
+            <form action="{{ url_for('logout') }}" method="post">
+                <button type="submit">Sair</button>
+            </form>
+        </div>
     </div>
     <div class="main">
         <div class="content">

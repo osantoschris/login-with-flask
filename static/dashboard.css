@@ -9,15 +9,22 @@ body {
     height: 100vh;
     background: rgb(131,58,180);
     background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    font-family: 'Comfortaa', sans-serif;
 }
 
 .header {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: center
 }
-.header label {
+.content-header {
+    width: 98%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content-header label {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -26,16 +33,19 @@ body {
     font-size: 48px;
     color: #fff;
 }
-.header button {
+.content-header button {
     width: 50px;
     height: 40px;
-    margin: 10px;
     text-transform: lowercase;
     font-family: 'Comfortaa', sans-serif;
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 3px 15px 0 rgba(31,38,135,0.37);
 }
-.header button:hover {
+.content-header button:hover {
     cursor: pointer;
-
+    background-color: rgba(232, 232, 232);
 }
 
 .main {
@@ -55,5 +65,4 @@ body {
     box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
     backdrop-filter: blur(13.5px);
     -webkit-backdrop-filter: blur(13.5px);
-    font-family: 'Comfortaa', sans-serif;
 }
