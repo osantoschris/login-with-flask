@@ -13,3 +13,6 @@ Esta documentação está em processo de criação juntamente com a aplicação.
  - Criado nova tabela para cadastro de clientes. Deve ser feita a normalização para verificar se está de acordo com as regras de negócio.
  - Ajustar botão de sair da pagina de dashboard, ainda está com o layout default. Combinar com o gradiente do fundo.
  - Trocar fonte da tela de dashboard
+
+30/01/2024
+ - Tentativa 1 de fazer deploy
