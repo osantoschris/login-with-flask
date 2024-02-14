@@ -22,3 +22,11 @@ Esta documentação está em processo de criação juntamente com a aplicação.
 09/02/2024
 Após alguns dias de viagem, retomei as programações da aplicação. 
  - Botões de telas de cadastro e consulta de clientes.
+
+14/02/2024
+Implementações:
+ - Pesquisas no banco de dados para preenchimento de combobox
+ - Criação da view dentro do banco de dados
+Próximos passos:
+ - Criar o formulário de cadastro com um botão de cadastrar e voltar (duas ações no mesmo formulário)
+ - Ver rotas dentro da aplicação, não está conseguindo redirecionar para a função correta quando clica em voltar. 

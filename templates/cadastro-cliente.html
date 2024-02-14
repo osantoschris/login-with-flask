@@ -26,7 +26,7 @@
         <div class="cadastro">
                 
             <h3>cadastro</h3>
-            
+
             <form action="{{ url_for('register_new_client') }}" method="post">
                 <label for="name">Nome:</label>
                 <input type="text" name="name" id="name">
@@ -35,9 +35,9 @@
                 <label for="email">Email:</label>
                 <input type="email" name="email" id="email">
                 
-                <button type="submit">Cadastrar</button>
+                <button type="submit">cadastrar</button>
             </form>
-    
+                
             <div class="mensagem">
                 {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+import sqlite3
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key_here'
@@ -37,7 +38,6 @@ def login():
 
         if user and check_password_hash(user.password, password):
             session['user_id'] = user.id
-            # flash('Login bem-sucedido!', 'success')
             return redirect(url_for('dashboard'))
 
         flash('Usuário ou senha incorretos. Tente novamente.', 'danger')
@@ -99,6 +99,12 @@ def register_new_client():
             flash(f'O cliente {name} já possui cadastro, verifique seus dados na tela de consulta.', 'warning')
         elif existing_email:
             flash('O email já possui cadastro, verifique seus dados na tela de consulta.', 'warning')
+        elif name == '':
+            flash('Preencha o nome do cliente!', 'warning') 
+        elif company == '':
+            flash('Preencha o nome da empresa', 'warning')
+        elif email == '':
+            flash('Preencha o email do cliente', 'warning')
         else:
             new_client = Client(name=name, company=company, email=email)
             db.session.add(new_client)
@@ -111,13 +117,36 @@ def register_new_client():
 def register_client():
     return render_template('cadastro-cliente.html')
 
+@app.route('/view_client', methods=['GET', 'POST'])
+def view_client():
+    conn = sqlite3.connect('./instance/database.db')
+    cursor = conn.cursor()
+
+    # Encontrar os clientes
+    cursor.execute('''
+        SELECT id, name FROM clientes;    
+    ''')
+    options = cursor.fetchall()
+
+    # Encontrar as empresas
+    cursor.execute('''
+        SELECT company FROM empresas;
+    ''')
+    company = cursor.fetchall()
+
+    conn.close()
+
+    return render_template('consulta-cliente.html', options=options, empresas=company)
+
+
+@app.route('/action_page', methods=['GET', 'POST'])
+def action():
+    if request.form['register']:
+        return url_for('register_new_client')
+    elif request.form['dashboard']:
+        return url_for('dashboard')
+        
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    # app.run(host='DESKTOP-FG2076Q', debug=True) # IP GO
-    # app.run(host='192.168.0.99', port=5000, debug=True) # IP SP
-    app.run(host='192.168.0.105', port='5000', debug=True)
-
-# 25/01/2024 - IP Atual = '192.168.0.108'
-# 29/01/2024 - IP se manteve o mesmo. 
-# 13/02/2024 - IP Alterado. Utilizando o Host para não precisar alterar continuamente. 
+    app.run(host='192.168.0.108', port='5000', debug=True)

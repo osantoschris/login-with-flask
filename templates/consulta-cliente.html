@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='consulta.css') }}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa:wght@300&family=Honk&display=swap');
+    </style>
+    <title>Consulta Clientes</title>
+</head>
+<body>
+    
+    <div class="header">
+        <h2>company co.</h2>
+        <form action="{{ url_for('dashboard') }}" method="post">
+            <button type="submit">voltar</button>
+        </form>
+        <form action="{{ url_for('logout') }}" method="post">
+            <button type="submit">sair</button>
+        </form>
+    </div>
+
+    <div class="container">
+
+        <div class="menu">
+            
+            <label for="name">Nome:</label>
+            <select name="nomes" id="nome">
+                <option value="" selected disabled hidden>Escolha um nome</option>
+                {% for option in options %}
+                    <option value="{{ option[0] }}">{{ option[1] }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="company">Empresa:</label>
+            <select name="company" id="company">
+                <option value="" selected disabled hidden>Escolha uma empresa</option>
+                {% for empresa in empresas %}
+                    <option value="{{ empresa[0] }}">{{ empresa[0] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="result">
+            <!-- Inserir a tabela com os dados aqui -->
+        </div>
+
+    </div>
+
+</body>
+</html>
