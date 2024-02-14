@@ -17,7 +17,7 @@ class User(db.Model):
     password = db.Column(db.String(200), nullable=False)
 
 class Client(db.Model):
-    __tablename__ = 'clients'
+    __tablename__ = 'clientes'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     company = db.Column(db.String(100), nullable=True)
@@ -37,7 +37,7 @@ def login():
 
         if user and check_password_hash(user.password, password):
             session['user_id'] = user.id
-            flash('Login bem-sucedido!', 'success')
+            # flash('Login bem-sucedido!', 'success')
             return redirect(url_for('dashboard'))
 
         flash('Usuário ou senha incorretos. Tente novamente.', 'danger')
@@ -50,7 +50,7 @@ def logout():
     flash('Logout realizado.', 'success')
     return redirect(url_for('login'))
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
     if 'user_id' in session:
         user = User.query.get(session['user_id'])
@@ -85,10 +85,39 @@ def register():
 
     return render_template('register.html')
 
+@app.route('/new_client', methods=['GET', 'POST'])
+def register_new_client():
+    if request.method == 'POST':
+        name = request.form['name']
+        company = request.form['company']
+        email = request.form['email']
+
+        existing_client = Client.query.filter_by(name=name).first()
+        existing_email = Client.query.filter_by(email=email).first()
+
+        if existing_client:
+            flash(f'O cliente {name} já possui cadastro, verifique seus dados na tela de consulta.', 'warning')
+        elif existing_email:
+            flash('O email já possui cadastro, verifique seus dados na tela de consulta.', 'warning')
+        else:
+            new_client = Client(name=name, company=company, email=email)
+            db.session.add(new_client)
+            db.session.commit()
+            flash(f'Cliente {name} cadastrado com sucesso!')
+            return redirect(url_for('register_client'))
+    return render_template('cadastro-cliente.html')
+
+@app.route('/register_client', methods=['GET', 'POST'])
+def register_client():
+    return render_template('cadastro-cliente.html')
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(host='192.168.0.108', debug=True)
+    # app.run(host='DESKTOP-FG2076Q', debug=True) # IP GO
+    # app.run(host='192.168.0.99', port=5000, debug=True) # IP SP
+    app.run(host='192.168.0.105', port='5000', debug=True)
 
 # 25/01/2024 - IP Atual = '192.168.0.108'
 # 29/01/2024 - IP se manteve o mesmo. 
+# 13/02/2024 - IP Alterado. Utilizando o Host para não precisar alterar continuamente. 

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Cliente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cadastro.css') }}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa:wght@300&family=Honk&display=swap');
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="content-header">    
+            <label for="title">Company Co.</label>
+            <form action="{{ url_for('dashboard') }}" method="post">
+                <button id="voltar" type="submit">Voltar</button>
+            </form>
+            <form action="{{ url_for('logout') }}" method="post">
+                <button id="sair" type="submit">Sair</button>
+            </form>
+        </div>
+    </div>
+    <div class="main">
+        
+        <div class="cadastro">
+                
+            <h3>cadastro</h3>
+            
+            <form action="{{ url_for('register_new_client') }}" method="post">
+                <label for="name">Nome:</label>
+                <input type="text" name="name" id="name">
+                <label for="Company">Empresa:</label>
+                <input type="text" name="company" id="company">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email">
+                
+                <button type="submit">Cadastrar</button>
+            </form>
+    
+            <div class="mensagem">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert={{ category }}"> {{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}    
+            </div>
+            
+        </div>
+
+    </div>
+
+</body>
+</html>

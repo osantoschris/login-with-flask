@@ -18,3 +18,7 @@ Esta documentação está em processo de criação juntamente com a aplicação.
  - Tentativa 1 de fazer deploy
  - Botão de sair ajustado
  - Fonte da tela de dashboard ajustada
+
+09/02/2024
+Após alguns dias de viagem, retomei as programações da aplicação. 
+ - Botões de telas de cadastro e consulta de clientes.

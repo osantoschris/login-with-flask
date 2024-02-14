@@ -11,8 +11,8 @@
 </head>
 <body>
     <div class="header">
-        <div class="content-header">    
-            <label for="title">Bem vindo</label>
+        <div class="content-header">
+            <label for="title">Company Co.</label>
             <form action="{{ url_for('logout') }}" method="post">
                 <button type="submit">Sair</button>
             </form>
@@ -20,9 +20,33 @@
     </div>
     <div class="main">
         <div class="content">
-            <h3>Bem-vindo!</h3>
-            <p>Seja bem-vindo ao sistema de cadastro de clientes.</p>
-            <p>Este será seu espaço para realizar o cadastro e gerenciamento de seus clientes.</p>
+            <div class="title-content">
+                <h3>Bem-vindo!</h3>
+            </div>
+            <div class="header-content">
+                <p>Seja bem-vindo ao sistema de cadastro de clientes.</p>
+                <p>Este será seu espaço para realizar o cadastro e gerenciamento de seus clientes.</p>
+            </div>
+            <div class="linha"></div>
+            <div class="consulta-cadastro">
+                <div class="cadastro">
+                    <h3>cadastrar novo cliente</h3>
+                    <form action="{{ url_for('register_client') }}" method="post">
+                        <button type="submit">
+                            cadastrar
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="consultar">
+                    <h3>consultar cadastros ativos</h3>
+                    <form action="{{ url_for('register_client') }}" method="post">
+                        <button type="submit">
+                            clientes
+                        </button>
+                    </form>           
+                </div>
+            </div>
         </div>
     </div>
 </body>

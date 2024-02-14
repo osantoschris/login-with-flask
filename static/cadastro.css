@@ -13,12 +13,12 @@ body {
 }
 
 .header {
-    width: 100vw;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.content-header {
+.content-header{
     width: 98%;
     display: flex;
     align-items: center;
@@ -42,24 +42,32 @@ body {
     background: #fff;
     border: none;
     border-radius: 5px;
-    box-shadow: 0 3px 15px 0 rgba(31,38,135,0.37);
+    box-shadow: 0 3px 15px 0 rgba(31, 38, 135, 0.37);
 }
 .content-header button:hover {
     cursor: pointer;
     background-color: rgba(232, 232, 232);
 }
+#voltar {
+    margin-right: 5px;
+}
 
 .main {
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center ;
+    justify-content: center;
 }
 
-.content {
+.cadastro {
     width: 98%;
-    height: 100%;
-    padding: 10px;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-transform: lowercase;
     border: 1px solid rgba(255,255,255,0.18);
     border-radius: 15px;
     background: rgba(255,255,255,0.35);
@@ -67,49 +75,37 @@ body {
     backdrop-filter: blur(13.5px);
     -webkit-backdrop-filter: blur(13.5px);
 }
-
-.header-content {
-    padding: 20px 0px;
+.cadastro button {
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 3px 15px 0 rgba(31, 38, 135, 0.37);
+    text-transform: lowercase;
+    font-family: 'Comfortaa', sans-serif;
+    color: rgb(128, 128, 128);
 }
-.consulta-cadastro {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 10px;
+.cadastro button:hover {
+    cursor: pointer;
+    background-color: rgba(232, 232, 232);
 }
-.cadastro, .consultar {
-    width: 30%;
+.cadastro form {
+    margin: 5px;
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border: 1px solid rgba(232, 232, 232, 0.7);
+    border-radius: 15px;
+    background-color: rgba(232, 232, 232, 0.7);
 }
-.cadastro button, .consultar button {
-    width: 100px;
-    height: 25px;
-    border: none;
-    border-radius: 5px;
-    background: #fff;
-    font-family: 'Comfortaa', sans-serif;
-    color: rgb(128, 128, 128);
+.cadastro input {
     margin: 5px;
-}
-.cadastro button:hover, .consultar button:hover {
-    cursor: pointer;
-    background-color: rgba(232, 232, 232)
-}
-
-.linha {
-    width: 100%;
-    height: 1px;
-    background-color: #fff;
-    box-shadow: 0 3px 15px 0 rgba(31,38,135,0.37);;
-}
-
-@media only screen and (min-width: 390px) and (max-width: 720px){
-    .content {
-        height: 80vh;
-    }
+    border: none;
+    width: 60%;
+    height: 20px;
+    border-radius: 5px;
 }

@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa:wght@300&family=Honk&display=swap');
+    </style>
     <title>Registro</title>
 </head>
 <body>
-    <div class="container">
+    <div id="register-container" class="container">
+        <h2>Registro</h2>
         <form action="{{ url_for('register') }}" method="post">
-            <h2>Registro</h2>
             
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
@@ -30,9 +33,9 @@
             <label for="password">Senha:</label>
             <input type="password" name="password" id="password" required>
             <button type="submit">Registro</button>
-            <p>Já tem uma conta? <a href="{{ url_for('login') }}">Faça login aqui!</a></p>
-
+            
         </form>
+        <p id="aviso-cadastro">Já tem uma conta? <a href="{{ url_for('login') }}">Faça login aqui!</a></p>
     </div>
 </body>
 </html>
