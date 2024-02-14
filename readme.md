@@ -1,5 +1,28 @@
+# Login with Flask (a python app)
+Este é o ínicio de uma jornada de criação de aplicações web utilizando python. Neste caso, Flask. 
 
-### Etapas de execução
+## Login
+A primeira etapa da aplicação consiste em um sistema de login buscando o usuário em um banco de dados SQLite3. É possível realizar o cadastro do usuário através do link fornecido pela aplicação. 
+<br>
+No momento do registro do usuário, será solicitado os seguintes campos:
+ - Nome
+ - Sobrenome
+ - Email
+ - Nome de usuário
+ - Senha
+<br>
+A senha do usuário será criptografada utilizando o método 'pbkdf2:sha256'.
+
+## Cadastro de clientes
+A segunda etapa da aplicação é responsável pelo cadastro de clientes, onde são solicitados os seguintes campos;
+ - Nome do cliente
+ - Empresa do cliente
+ - Email do cliente
+
+# Anotações do desenvolvedor
+Este é um projeto que está em execução para fins de portifólio. Serão aplicadas melhorias no decorrer do desenvolvimento. Abaixo estão as etapas de desenvolvimento até o momento. Cada nova modificação será atualizada no arquivo de README. 
+
+# Etapas de execução
 **25/01/2024**
 Este é o ínicio de um projeto Front-End onde será criado um sistema de cadastro de usuários com a utilização do banco de dados SQLite3.
 A aplicação está sendo desenvolvida com as seguintes linguagens:
