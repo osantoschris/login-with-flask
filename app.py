@@ -142,9 +142,9 @@ def view_client():
 @app.route('/action_page', methods=['GET', 'POST'])
 def action():
     if request.form['register']:
-        return url_for('register_new_client')
+        return redirect(url_for('register_new_client'))
     elif request.form['dashboard']:
-        return url_for('dashboard')
+        return redirect(url_for('dashboard'))
         
 if __name__ == '__main__':
     with app.app_context():
