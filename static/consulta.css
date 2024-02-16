@@ -10,5 +10,103 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content-header {
+    width: 98%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content-header label {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    font-family: 'Bebas Neue', system-ui;
+    font-size: 48px;
+    color: #fff;
+}
+.content-header button {
+    width: 50px;
+    height: 40px;
+    text-transform: lowercase;
+    font-family: 'Comfortaa', sans-serif;
+    color: rgb(128, 128, 128);
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 3px 15px 0 rgba(31, 38, 135, 0.37);
+}
+.content-header button:hover {
+    cursor: pointer;
+    background-color: rgba(232, 232, 232);
+}
+#voltar {
+    margin-right: 5px;
+}
+.container {
+    width: 98%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-around;
+    text-transform: lowercase;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-radius: 15px;
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+}
+.menu {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 15px;
+    background-color: rgba(232, 232, 232, 0.7);
+}
+.menu form {
+    padding: 5px;
+}
+.menu select {
+    font-family: 'Comfortaa', sans-serif;
+    color: rgb(128, 128, 128);    
+}
+.menu form > button {
+    width: 100px;
+    height: 30px;
+    margin: 5px;
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 3px 15px 0 rgba(31, 38, 135, 0.37);
+    text-transform: lowercase;
+    font-family: 'Comfortaa', sans-serif;
+    color: rgb(128, 128, 128);
+}
+.menu form > button:hover {
+    cursor: pointer;
+    background-color: rgba(232, 232, 232);
+}
+.result {
+    width: 80%;
+    height: 70%;
+    border: 1px solid rgba(232, 232, 232, 0.7) ;
+    border-radius: 15px;
+    background-color: rgba(232, 232, 232, 0.7);
 }

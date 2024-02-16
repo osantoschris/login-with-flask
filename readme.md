@@ -55,3 +55,9 @@ Implementações:
 Próximos passos:
  - Criar o formulário de cadastro com um botão de cadastrar e voltar (duas ações no mesmo formulário)
  - Ver rotas dentro da aplicação, não está conseguindo redirecionar para a função correta quando clica em voltar. 
+
+**15/02/2024**
+Implementações:
+ - Estilização da página de consulta de clientes
+
+Tentativa de consulta do cliente pelo nome da empresa. Até o momento sem sucesso. Verificar outras formas de consultas.

@@ -138,13 +138,22 @@ def view_client():
 
     return render_template('consulta-cliente.html', options=options, empresas=company)
 
+@app.route('/search_client', methods=['GET', 'POST'])
+def search():
+    empresa = request.args.get('company')
+    flash(empresa)
+    conn = sqlite3.connect('./instance/database.db')
+    cursor = conn.cursor()
 
-@app.route('/action_page', methods=['GET', 'POST'])
-def action():
-    if request.form['register']:
-        return redirect(url_for('register_new_client'))
-    elif request.form['dashboard']:
-        return redirect(url_for('dashboard'))
+    cursor.execute('''
+        SELECT * FROM clientes
+        WHERE company = ?
+    ''', (empresa,))
+
+    clientes = cursor.fetchall()
+    conn.close()
+
+    return render_template('consulta-cliente.html', options=clientes)
         
 if __name__ == '__main__':
     with app.app_context():

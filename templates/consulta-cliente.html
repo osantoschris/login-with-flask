@@ -12,26 +12,28 @@
 <body>
     
     <div class="header">
-        <h2>company co.</h2>
-        <form action="{{ url_for('dashboard') }}" method="post">
-            <button type="submit">voltar</button>
-        </form>
-        <form action="{{ url_for('logout') }}" method="post">
-            <button type="submit">sair</button>
-        </form>
+        <div class="content-header">
+            <label for="title">company co.</label>
+            <form action="{{ url_for('dashboard') }}" method="post">
+                <button id="voltar" type="submit">voltar</button>
+            </form>
+            <form action="{{ url_for('logout') }}" method="post">
+                <button type="submit">sair</button>
+            </form>
+        </div>
     </div>
 
     <div class="container">
 
         <div class="menu">
             
-            <label for="name">Nome:</label>
+            <!-- <label for="name">Nome:</label>
             <select name="nomes" id="nome">
                 <option value="" selected disabled hidden>Escolha um nome</option>
                 {% for option in options %}
                     <option value="{{ option[0] }}">{{ option[1] }}</option>
                 {% endfor %}
-            </select>
+            </select> -->
 
             <label for="company">Empresa:</label>
             <select name="company" id="company">
@@ -40,10 +42,16 @@
                     <option value="{{ empresa[0] }}">{{ empresa[0] }}</option>
                 {% endfor %}
             </select>
+            <form action="{{ url_for('search') }}" method="post">
+                <button type="submit">procurar</button>
+            </form>
         </div>
 
         <div class="result">
             <!-- Inserir a tabela com os dados aqui -->
+            {% for cliente in clientes %}
+                <div> {{ clientes[i] }}</div>
+            {% endfor %}
         </div>
 
     </div>
