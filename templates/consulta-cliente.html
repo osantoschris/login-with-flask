@@ -13,7 +13,7 @@
     
     <div class="header">
         <div class="content-header">
-            <label for="title">company co.</label>
+            <label>company co.</label>
             <form action="{{ url_for('dashboard') }}" method="post">
                 <button id="voltar" type="submit">voltar</button>
             </form>
@@ -26,35 +26,47 @@
     <div class="container">
 
         <div class="menu">
-            
-            <!-- <label for="name">Nome:</label>
-            <select name="nomes" id="nome">
-                <option value="" selected disabled hidden>Escolha um nome</option>
-                {% for option in options %}
-                    <option value="{{ option[0] }}">{{ option[1] }}</option>
-                {% endfor %}
-            </select> -->
 
-            <label for="company">Empresa:</label>
-            <select name="company" id="company">
-                <option value="" selected disabled hidden>Escolha uma empresa</option>
-                {% for empresa in empresas %}
-                    <option value="{{ empresa[0] }}">{{ empresa[0] }}</option>
-                {% endfor %}
-            </select>
+            <label>Empresa:</label>
             <form action="{{ url_for('search') }}" method="post">
+                <select name="company" id="company" required>
+                    <option value="" selected disabled hidden>Escolha uma empresa</option>
+                    {% for empresa in empresas %}
+                        <option value="{{ empresa[0] }}">{{ empresa[0] }}</option>
+                    {% endfor %}
+                </select>
                 <button type="submit">procurar</button>
             </form>
+
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
         </div>
 
         <div class="result">
-            <!-- Inserir a tabela com os dados aqui -->
-            {% for cliente in clientes %}
-                <div> {{ clientes[i] }}</div>
-            {% endfor %}
-        </div>
 
-    </div>
+            {% if clientes %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cliente in clientes %}
+                            <tr>
+                                <td>{{ cliente[1] }}</td>
+                                <td>{{ cliente[3] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Selecione uma empresa para exibir os clientes</p>
+            {% endif %}
+            
+        </div>
 
 </body>
 </html>

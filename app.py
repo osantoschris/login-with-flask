@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session, abort
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
@@ -136,24 +136,58 @@ def view_client():
 
     conn.close()
 
-    return render_template('consulta-cliente.html', options=options, empresas=company)
+    clientes = search_all_clients()
 
-@app.route('/search_client', methods=['GET', 'POST'])
-def search():
-    empresa = request.args.get('company')
-    flash(empresa)
+    return render_template('consulta-cliente.html', options=options, empresas=company, clientes=clientes)
+
+
+def search_cients(selected_company):
     conn = sqlite3.connect('./instance/database.db')
-    cursor = conn.cursor()
-
-    cursor.execute('''
+    c = conn.cursor()
+    c.execute('''
         SELECT * FROM clientes
         WHERE company = ?
-    ''', (empresa,))
-
-    clientes = cursor.fetchall()
+    ''', (selected_company,))
+    clients = c.fetchall()
     conn.close()
 
-    return render_template('consulta-cliente.html', options=clientes)
+    return clients
+
+def search_all_clients():
+    conn = sqlite3.connect('./instance/database.db')
+    c = conn.cursor()
+    c.execute('''
+        SELECT * FROM clientes
+    ''')
+    clients = c.fetchall()
+    conn.close()
+
+    return clients
+
+@app.route('/search', methods=['POST'])
+def search():
+
+    if 'company' not in request.form:
+        return abort(400, "Campo não encontrado na solicitação!")
+
+    selected_company = request.form['company']
+
+    conn = sqlite3.connect('./instance/database.db')
+    c = conn.cursor()
+    c.execute('''
+        SELECT company FROM empresas;
+    ''')
+    empresas = c.fetchall()
+    conn.close()
+
+    if not selected_company:
+        clientes = search_all_clients()
+        return render_template('consulta-cliente.html', empresas=empresas, clientes=clientes)
+
+    if selected_company:
+        clientes = search_cients(selected_company)
+        return render_template('consulta-cliente.html', empresas=empresas, clientes=clientes, empresa_selecionada=selected_company)
+
         
 if __name__ == '__main__':
     with app.app_context():

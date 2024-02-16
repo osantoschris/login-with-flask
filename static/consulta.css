@@ -103,10 +103,31 @@ body {
     cursor: pointer;
     background-color: rgba(232, 232, 232);
 }
+
 .result {
     width: 80%;
     height: 70%;
     border: 1px solid rgba(232, 232, 232, 0.7) ;
     border-radius: 15px;
     background-color: rgba(232, 232, 232, 0.7);
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+.result table {
+    width: 80%;
+    margin-top: 10px;
+}
+
+.result table > thead > tr > th {
+    width: 50%;
+    background-color: #ccc;
+    border-top: 1px solid rgb(0, 0, 0);
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+table tr:nth-of-type(odd) {
+    background-color: #fff;
+}
+table tr:nth-of-type(even) {
+    background-color: #ccc;
 }
