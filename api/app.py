@@ -119,7 +119,7 @@ def register_client():
 
 @app.route('/view_client', methods=['GET', 'POST'])
 def view_client():
-    conn = sqlite3.connect('../instance/database.db')
+    conn = sqlite3.connect('./instance/database.db')
     cursor = conn.cursor()
 
     # Encontrar os clientes
