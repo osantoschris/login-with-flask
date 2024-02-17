@@ -59,7 +59,7 @@ def dashboard():
         flash('Faça login para acessar o painel!', 'warning')
         return redirect(url_for('login'))
 
-@app.route('/register', methods=['POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         name = request.form['name']
@@ -192,4 +192,4 @@ def search():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(host='localhost', port='5000', debug=True)
+    app.run(host='192.168.0.107', port='5000', debug=True)
