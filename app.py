@@ -44,7 +44,7 @@ def login():
 
     return render_template('login.html')
 
-@app.route('/logout', methods=['GET', 'POST'])
+@app.route('/logout', methods=['POST'])
 def logout():
     session.pop('user_id', None)
     flash('Logout realizado.', 'success')
@@ -59,7 +59,7 @@ def dashboard():
         flash('Faça login para acessar o painel!', 'warning')
         return redirect(url_for('login'))
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['POST'])
 def register():
     if request.method == 'POST':
         name = request.form['name']
@@ -85,7 +85,7 @@ def register():
 
     return render_template('register.html')
 
-@app.route('/new_client', methods=['GET', 'POST'])
+@app.route('/new_client', methods=['POST'])
 def register_new_client():
     if request.method == 'POST':
         name = request.form['name']
@@ -113,11 +113,11 @@ def register_new_client():
             return redirect(url_for('register_client'))
     return render_template('cadastro-cliente.html')
 
-@app.route('/register_client', methods=['GET', 'POST'])
+@app.route('/register_client', methods=['POST'])
 def register_client():
     return render_template('cadastro-cliente.html')
 
-@app.route('/view_client', methods=['GET', 'POST'])
+@app.route('/view_client', methods=['POST'])
 def view_client():
     conn = sqlite3.connect('./instance/database.db')
     cursor = conn.cursor()

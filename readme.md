@@ -61,3 +61,8 @@ Implementações:
  - Estilização da página de consulta de clientes
 
 Tentativa de consulta do cliente pelo nome da empresa. Até o momento sem sucesso. Verificar outras formas de consultas.
+
+**16/02/2024**
+Implementações:
+ - Criação da função de pesquisa pelo nome da empresa e preenchimento da tabela de acordo com a quantidade de clientes. 
+ - Aplicação finalizada! 
