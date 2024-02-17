@@ -3,5 +3,8 @@
         {
             "source": "/(.*)", "destination": "/api/app"
         }
-    ]
+    ],
+    "permissions":{
+        "database.db":"write"
+    }
 }
