@@ -85,7 +85,7 @@ def register():
 
     return render_template('register.html')
 
-@app.route('/new_client', methods=['POST'])
+@app.route('/new_client', methods=['GET', 'POST'])
 def register_new_client():
     if request.method == 'POST':
         name = request.form['name']
@@ -117,7 +117,7 @@ def register_new_client():
 def register_client():
     return render_template('cadastro-cliente.html')
 
-@app.route('/view_client', methods=['POST'])
+@app.route('/view_client', methods=['GET', 'POST'])
 def view_client():
     conn = sqlite3.connect('../instance/database.db')
     cursor = conn.cursor()
@@ -142,7 +142,7 @@ def view_client():
 
 
 def search_cients(selected_company):
-    conn = sqlite3.connect('../instance/database.db')
+    conn = sqlite3.connect('./instance/database.db')
     c = conn.cursor()
     c.execute('''
         SELECT * FROM clientes
@@ -154,7 +154,7 @@ def search_cients(selected_company):
     return clients
 
 def search_all_clients():
-    conn = sqlite3.connect('../instance/database.db')
+    conn = sqlite3.connect('./instance/database.db')
     c = conn.cursor()
     c.execute('''
         SELECT * FROM clientes
