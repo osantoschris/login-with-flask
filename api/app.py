@@ -119,7 +119,7 @@ def register_client():
 
 @app.route('/view_client', methods=['GET', 'POST'])
 def view_client():
-    conn = sqlite3.connect('./instance/database.db')
+    conn = sqlite3.connect('api/instance/database.db')
     cursor = conn.cursor()
 
     # Encontrar os clientes
@@ -142,7 +142,7 @@ def view_client():
 
 
 def search_cients(selected_company):
-    conn = sqlite3.connect('./instance/database.db')
+    conn = sqlite3.connect('api/instance/database.db')
     c = conn.cursor()
     c.execute('''
         SELECT * FROM clientes
@@ -154,7 +154,7 @@ def search_cients(selected_company):
     return clients
 
 def search_all_clients():
-    conn = sqlite3.connect('./instance/database.db')
+    conn = sqlite3.connect('api/instance/database.db')
     c = conn.cursor()
     c.execute('''
         SELECT * FROM clientes
@@ -172,7 +172,7 @@ def search():
 
     selected_company = request.form['company']
 
-    conn = sqlite3.connect('./instance/database.db')
+    conn = sqlite3.connect('api/instance/database.db')
     c = conn.cursor()
     c.execute('''
         SELECT company FROM empresas;
