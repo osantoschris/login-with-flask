@@ -5,7 +5,8 @@ import sqlite3
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key_here'
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://default:Q6Vc8uGzdTYJ@ep-winter-leaf-a4and087-pooler.us-east-1.aws.neon.tech:5432/verceldb"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://database.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://default:Q6Vc8uGzdTYJ@ep-winter-leaf-a4and087-pooler.us-east-1.aws.neon.tech:5432/verceldb"
 
 db = SQLAlchemy(app)
 
